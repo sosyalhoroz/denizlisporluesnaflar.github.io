@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denizlispor Destekçisi Esnaflar</title>
+    <title>E-Horoz - Denizlispor Destekçisi Esnaflar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -24,6 +24,262 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #4a7c20, #5a9c30);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .tab-container {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            background: transparent;
+            color: #ccc;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: #4a7c20;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #4a7c20;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0f0f0f;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a7c20;
+            box-shadow: 0 0 0 3px rgba(74, 124, 32, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4a7c20, #5a9c30);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(74, 124, 32, 0.3);
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 15px;
+            background: #0f0f0f;
+            border: 2px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .payment-method.active {
+            border-color: #4a7c20;
+            background: rgba(74, 124, 32, 0.1);
+        }
+
+        .payment-method i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #4a7c20;
+        }
+
+        .bank-info {
+            background: #0f0f0f;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            margin-top: 20px;
+        }
+
+        .bank-info h4 {
+            color: #4a7c20;
+            margin-bottom: 15px;
+        }
+
+        .bank-detail {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .bank-detail:last-child {
+            border-bottom: none;
+        }
+
+        .copy-btn {
+            background: #4a7c20;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .amount-btn {
+            padding: 15px;
+            background: #0f0f0f;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .amount-btn.active {
+            border-color: #4a7c20;
+            background: rgba(74, 124, 32, 0.1);
         }
 
         /* Header */
@@ -106,6 +362,39 @@
         }
 
         .search-btn:hover {
+            background-color: #5a9c30;
+        }
+
+        /* Login/Register Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .auth-btn {
+            padding: 8px 16px;
+            border: 1px solid #4a7c20;
+            background-color: transparent;
+            color: #4a7c20;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .auth-btn:hover {
+            background-color: #4a7c20;
+            color: white;
+        }
+
+        .auth-btn.register {
+            background-color: #4a7c20;
+            color: white;
+        }
+
+        .auth-btn.register:hover {
             background-color: #5a9c30;
         }
 
@@ -348,6 +637,54 @@
             background-color: #5a9c30;
         }
 
+        /* Service Card - Özel hizmetler için */
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 2px solid #4a7c20;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(74, 124, 32, 0.3);
+        }
+
+        .service-card .business-logo {
+            margin: 0 auto 20px;
+            font-size: 32px;
+        }
+
+        .service-card h3 {
+            color: #4a7c20;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .service-btn {
+            background-color: #4a7c20;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .service-btn:hover {
+            background-color: #5a9c30;
+        }
+
         /* Footer */
         footer {
             background-color: #1a1a1a;
@@ -401,6 +738,13 @@
                 font-size: 0.8rem;
             }
 
+            .auth-buttons {
+                order: -1;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 16px;
+            }
+
             /* Mobile Navigation */
             .nav-container {
                 display: none;
@@ -447,6 +791,28 @@
 
             .category-header {
                 margin-bottom: 32px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .donation-amounts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .payment-methods {
+                flex-direction: column;
             }
         }
 
@@ -542,13 +908,23 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-container">
-                        DS
+                        🐓
                     </div>
                     <div class="logo-text">
-                        <h1>Denizlispor Destekçisi Esnaflar</h1>
-                        <p>Yeşil Siyah Kalplerimizle Birlikte</p>
+                        <h1>E-Horoz</h1>
+                        <p>Denizlispor Destekçisi Platform</p>
                     </div>
                 </div>
+                
+                <div class="auth-buttons">
+                    <a href="#" class="auth-btn" onclick="openMembershipModal('login')">
+                        <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    </a>
+                    <a href="#" class="auth-btn register" onclick="openMembershipModal('register')">
+                        <i class="fas fa-user-plus"></i> Kayıt Ol
+                    </a>
+                </div>
+
                 <div class="search-container">
                     <input type="text" class="search-box" placeholder="İşletme ara..." id="searchInput">
                     <button class="search-btn" onclick="searchBusinesses()">
@@ -566,6 +942,15 @@
             <div class="nav-container">
                 <button class="nav-btn active" onclick="showCategory('all')">
                     <i class="fas fa-th-large"></i> Tümü
+                </button>
+                <button class="nav-btn" onclick="showCategory('membership')">
+                    <i class="fas fa-user-check"></i> Üyelik İşlemleri
+                </button>
+                <button class="nav-btn" onclick="showCategory('dues')">
+                    <i class="fas fa-credit-card"></i> Aidat İşlemleri
+                </button>
+                <button class="nav-btn" onclick="showCategory('donations')">
+                    <i class="fas fa-heart"></i> Bağış İşlemleri
                 </button>
                 <button class="nav-btn" onclick="showCategory('restaurant')">
                     <i class="fas fa-utensils"></i> Restoran & Cafe
@@ -596,6 +981,15 @@
                 <button class="nav-btn active" onclick="showCategoryMobile('all')">
                     <i class="fas fa-th-large"></i> Tümü
                 </button>
+                <button class="nav-btn" onclick="showCategoryMobile('membership')">
+                    <i class="fas fa-user-check"></i> Üyelik İşlemleri
+                </button>
+                <button class="nav-btn" onclick="showCategoryMobile('dues')">
+                    <i class="fas fa-credit-card"></i> Aidat İşlemleri
+                </button>
+                <button class="nav-btn" onclick="showCategoryMobile('donations')">
+                    <i class="fas fa-heart"></i> Bağış İşlemleri
+                </button>
                 <button class="nav-btn" onclick="showCategoryMobile('restaurant')">
                     <i class="fas fa-utensils"></i> Restoran & Cafe
                 </button>
@@ -622,8 +1016,8 @@
     <main>
         <div class="container">
             <div class="category-header">
-                <h2 id="categoryTitle">Tüm <span class="highlight">İşletmeler</span></h2>
-                <p id="categoryDesc">Denizlispor'umuza destek veren tüm değerli esnaflarımız</p>
+                <h2 id="categoryTitle">Tüm <span class="highlight">Hizmetler</span></h2>
+                <p id="categoryDesc">Denizlispor'umuza destek için tüm hizmetlerimiz ve esnaflarımız</p>
             </div>
 
             <div class="business-grid" id="businessGrid">
@@ -632,33 +1026,367 @@
         </div>
     </main>
 
+    <!-- Üyelik Modal -->
+    <div id="membershipModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Üyelik İşlemleri</h2>
+                <span class="close" onclick="closeModal('membershipModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tab-container">
+                    <button class="tab-btn active" onclick="switchTab('login')">Giriş Yap</button>
+                    <button class="tab-btn" onclick="switchTab('register')">Kayıt Ol</button>
+                </div>
+
+                <!-- Giriş Formu -->
+                <div id="loginTab" class="tab-content active">
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>E-posta veya Üye No</label>
+                            <input type="text" required placeholder="ornek@email.com veya 12345">
+                        </div>
+                        <div class="form-group">
+                            <label>Şifre</label>
+                            <input type="password" required placeholder="Şifrenizi girin">
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Kayıt Formu -->
+                <div id="registerTab" class="tab-content">
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ad</label>
+                                <input type="text" required placeholder="Adınız">
+                            </div>
+                            <div class="form-group">
+                                <label>Soyad</label>
+                                <input type="text" required placeholder="Soyadınız">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta</label>
+                            <input type="email" required placeholder="ornek@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="tel" required placeholder="+90 555 123 4567">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Şifre</label>
+                                <input type="password" required placeholder="Güvenli şifre">
+                            </div>
+                            <div class="form-group">
+                                <label>Şifre Tekrar</label>
+                                <input type="password" required placeholder="Şifre tekrar">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Doğum Tarihi</label>
+                            <input type="date" required>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-user-plus"></i> Kayıt Ol
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aidat Modal -->
+    <div id="duesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Aidat İşlemleri</h2>
+                <span class="close" onclick="closeModal('duesModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tab-container">
+                    <button class="tab-btn active" onclick="switchDuesTab('card')">Kart ile Ödeme</button>
+                    <button class="tab-btn" onclick="switchDuesTab('bank')">Havale/EFT</button>
+                </div>
+
+                <!-- Kart Ödeme -->
+                <div id="cardTab" class="tab-content active">
+                    <form onsubmit="handleCardPayment(event)">
+                        <div class="form-group">
+                            <label>Üye Numarası</label>
+                            <input type="text" required placeholder="Üye numaranız">
+                        </div>
+                        <div class="form-group">
+                            <label>Ödeme Tutarı</label>
+                            <select required>
+                                <option value="">Seçiniz</option>
+                                <option value="50">Aylık Aidat - 50₺</option>
+                                <option value="150">3 Aylık Aidat - 150₺</option>
+                                <option value="300">6 Aylık Aidat - 300₺</option>
+                                <option value="600">Yıllık Aidat - 600₺</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Kart Numarası</label>
+                            <input type="text" required placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Son Kullanma</label>
+                                <input type="text" required placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label>CVV</label>
+                                <input type="text" required placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Kart Üzerindeki İsim</label>
+                            <input type="text" required placeholder="AHMET YILMAZ">
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-credit-card"></i> Ödemeyi Tamamla
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Banka Bilgileri -->
+                <div id="bankTab" class="tab-content">
+                    <div class="bank-info">
+                        <h4>Havale/EFT Bilgileri</h4>
+                        <div class="bank-detail">
+                            <span>Banka:</span>
+                            <span>Türkiye İş Bankası <button class="copy-btn" onclick="copyText('Türkiye İş Bankası')">Kopyala</button></span>
+                        </div>
+                        <div class="bank-detail">
+                            <span>Hesap Adı:</span>
+                            <span>Denizlispor Kulübü Derneği <button class="copy-btn" onclick="copyText('Denizlispor Kulübü Derneği')">Kopyala</button></span>
+                        </div>
+                        <div class="bank-detail">
+                            <span>IBAN:</span>
+                            <span>TR64 0006 4000 0011 2345 6789 01 <button class="copy-btn" onclick="copyText('TR64 0006 4000 0011 2345 6789 01')">Kopyala</button></span>
+                        </div>
+                        <div class="bank-detail">
+                            <span>Şube Kodu:</span>
+                            <span>1234 <button class="copy-btn" onclick="copyText('1234')">Kopyala</button></span>
+                        </div>
+                    </div>
+                    <form onsubmit="handleBankTransfer(event)" style="margin-top: 20px;">
+                        <div class="form-group">
+                            <label>Üye Numarası</label>
+                            <input type="text" required placeholder="Üye numaranız">
+                        </div>
+                        <div class="form-group">
+                            <label>Transfer Tutarı</label>
+                            <select required>
+                                <option value="">Seçiniz</option>
+                                <option value="50">Aylık Aidat - 50₺</option>
+                                <option value="150">3 Aylık Aidat - 150₺</option>
+                                <option value="300">6 Aylık Aidat - 300₺</option>
+                                <option value="600">Yıllık Aidat - 600₺</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Transfer Açıklaması</label>
+                            <textarea placeholder="Aidat ödemesi - Üye No: [Üye numaranız]" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-university"></i> Transfer Bilgilerini Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bağış Modal -->
+    <div id="donationsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Bağış İşlemleri</h2>
+                <span class="close" onclick="closeModal('donationsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tab-container">
+                    <button class="tab-btn active" onclick="switchDonationTab('amount')">Bağış Yap</button>
+                    <button class="tab-btn" onclick="switchDonationTab('campaigns')">Kampanyalar</button>
+                </div>
+
+                <!-- Bağış Formu -->
+                <div id="amountTab" class="tab-content active">
+                    <div class="donation-amounts">
+                        <button type="button" class="amount-btn" onclick="selectAmount(50)">50₺</button>
+                        <button type="button" class="amount-btn" onclick="selectAmount(100)">100₺</button>
+                        <button type="button" class="amount-btn" onclick="selectAmount(250)">250₺</button>
+                        <button type="button" class="amount-btn" onclick="selectAmount(500)">500₺</button>
+                        <button type="button" class="amount-btn" onclick="selectAmount(1000)">1000₺</button>
+                        <button type="button" class="amount-btn" onclick="selectAmount('custom')">Diğer</button>
+                    </div>
+
+                    <form onsubmit="handleDonation(event)">
+                        <div class="form-group">
+                            <label>Bağış Tutarı</label>
+                            <input type="number" id="donationAmount" required placeholder="Bağış tutarını girin" min="10">
+                        </div>
+                        <div class="form-group">
+                            <label>Bağış Kategorisi</label>
+                            <select required>
+                                <option value="">Seçiniz</option>
+                                <option value="genel">Genel Bağış</option>
+                                <option value="transfer">Transfer Fonu</option>
+                                <option value="stadyum">Stadyum Gelişimi</option>
+                                <option value="altyapi">Altyapı Destegi</option>
+                                <option value="sosyal">Sosyal Sorumluluk</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ad Soyad</label>
+                                <input type="text" required placeholder="Adınız Soyadınız">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input type="tel" required placeholder="+90 555 123 4567">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta</label>
+                            <input type="email" required placeholder="ornek@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Mesaj (İsteğe bağlı)</label>
+                            <textarea placeholder="Bağışınızla ilgili mesajınız..."></textarea>
+                        </div>
+
+                        <div class="payment-methods">
+                            <div class="payment-method active" onclick="selectPaymentMethod('card')">
+                                <i class="fas fa-credit-card"></i>
+                                <div>Kredi Kartı</div>
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod('bank')">
+                                <i class="fas fa-university"></i>
+                                <div>Havale/EFT</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-heart"></i> Bağışı Tamamla
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Kampanyalar -->
+                <div id="campaignsTab" class="tab-content">
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <i class="fas fa-bullhorn" style="font-size: 3rem; color: #4a7c20; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">Aktif Kampanyalar</h3>
+                        <div style="background: #0f0f0f; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #333;">
+                            <h4 style="color: #4a7c20; margin-bottom: 10px;">🎯 Transfer Fonu Kampanyası</h4>
+                            <p style="color: #ccc; margin-bottom: 10px;">Yeni sezon transfer çalışmaları için bağış kampanyası</p>
+                            <div style="background: #333; height: 10px; border-radius: 5px; margin: 10px 0;">
+                                <div style="background: #4a7c20; height: 100%; width: 65%; border-radius: 5px;"></div>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #999;">Hedef: 500.000₺ | Toplanan: 325.000₺ (65%)</p>
+                        </div>
+                        <div style="background: #0f0f0f; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #333;">
+                            <h4 style="color: #4a7c20; margin-bottom: 10px;">🏟️ Stadyum Gelişimi</h4>
+                            <p style="color: #ccc; margin-bottom: 10px;">Stadyumumuzun modernizasyonu için destek</p>
+                            <div style="background: #333; height: 10px; border-radius: 5px; margin: 10px 0;">
+                                <div style="background: #4a7c20; height: 100%; width: 40%; border-radius: 5px;"></div>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #999;">Hedef: 1.000.000₺ | Toplanan: 400.000₺ (40%)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <h3>Denizlispor <span class="highlight">Destekçisi</span> Esnaflar</h3>
-                <p>Bu platform, Denizlispor'umuzu destekleyen değerli esnaflarımızı bir araya getirmek için oluşturulmuştur.</p>
+                <h3><span class="highlight">E-Horoz</span> Platform</h3>
+                <p>Denizlispor'umuzu destekleyen tüm hizmetler ve esnaflar için kapsamlı platform.</p>
                 <p style="margin-top: 20px; color: #4a7c20;">
                     <i class="fas fa-heart"></i> Yeşil Siyah Aşkına <i class="fas fa-heart"></i>
                 </p>
                 <p style="margin-top: 15px;">
-                    © 2024 Denizlispor Destekçisi Esnaflar. Tüm hakları saklıdır.
+                    © 2024 E-Horoz Platform. Tüm hakları saklıdır.
                 </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // İşletme verileri - Sansürlü telefon numaraları
+        // İşletme verileri - Yeni kategorilerle
         const businesses = [
-            // Restoran & Cafe
+            // Üyelik İşlemleri
             {
                 id: 1,
+                name: "Üyelik Sistemi",
+                category: "membership",
+                logo: "👤",
+                phone: "+90 258 444 ***0",
+                phoneCall: "+902584440000",
+                address: "Online Platform",
+                description: "Denizlispor destekçisi olarak kayıt olun, üyeliğinizi yönetin ve özel avantajlardan yararlanın.",
+                social: {
+                    instagram: "https://instagram.com/ehoroz",
+                    facebook: "https://facebook.com/ehoroz",
+                    whatsapp: "https://wa.me/902584440000"
+                },
+                maps: "#",
+                isService: true
+            },
+            // Aidat İşlemleri
+            {
+                id: 2,
+                name: "Aidat Ödeme Sistemi",
+                category: "dues",
+                logo: "💳",
+                phone: "+90 258 444 ***1",
+                phoneCall: "+902584440001",
+                address: "Online Platform",
+                description: "Üyelik aidatlarınızı güvenle ödeyin, ödeme geçmişinizi görüntüleyin ve hatırlatmalar alın.",
+                social: {
+                    instagram: "https://instagram.com/ehoroz",
+                    facebook: "https://facebook.com/ehoroz",
+                    whatsapp: "https://wa.me/902584440001"
+                },
+                maps: "#",
+                isService: true
+            },
+            // Bağış İşlemleri
+            {
+                id: 3,
+                name: "Bağış Platformu",
+                category: "donations",
+                logo: "❤️",
+                phone: "+90 258 444 ***2",
+                phoneCall: "+902584440002",
+                address: "Online Platform",
+                description: "Denizlispor'umuz için bağış yapın, kampanyaları takip edin ve kulübümüze destek olun.",
+                social: {
+                    instagram: "https://instagram.com/ehoroz",
+                    facebook: "https://facebook.com/ehoroz",
+                    whatsapp: "https://wa.me/902584440002"
+                },
+                maps: "#",
+                isService: true
+            },
+            // Restoran & Cafe
+            {
+                id: 4,
                 name: "Yeşil Siyah Cafe",
                 category: "restaurant",
                 logo: "☕",
                 phone: "+90 258 123 ***7",
-                phoneCall: "+902581234567", // Gerçek numara arama için
+                phoneCall: "+902581234567",
                 address: "Çamlaraltı Mahallesi, Denizli",
                 description: "Denizlispor taraftarlarının buluşma noktası",
                 social: {
@@ -669,7 +1397,7 @@
                 maps: "https://maps.google.com/?q=Çamlaraltı+Mahallesi+Denizli"
             },
             {
-                id: 2,
+                id: 5,
                 name: "Horoz Restaurant",
                 category: "restaurant",
                 logo: "🍽️",
@@ -685,7 +1413,7 @@
                 maps: "https://maps.google.com/?q=Servergazi+Mahallesi+Denizli"
             },
             {
-                id: 3,
+                id: 6,
                 name: "Stadyum Kahvesi",
                 category: "restaurant",
                 logo: "🏟️",
@@ -702,7 +1430,7 @@
             },
             // Giyim
             {
-                id: 4,
+                id: 7,
                 name: "Taraftar Giyim",
                 category: "clothing",
                 logo: "👕",
@@ -718,7 +1446,7 @@
                 maps: "https://maps.google.com/?q=Kale+Mahallesi+Denizli"
             },
             {
-                id: 5,
+                id: 8,
                 name: "Yeşil Moda",
                 category: "clothing",
                 logo: "🛍️",
@@ -734,7 +1462,7 @@
                 maps: "https://maps.google.com/?q=Gerzele+Mahallesi+Denizli"
             },
             {
-                id: 6,
+                id: 9,
                 name: "Spor Dünyası",
                 category: "clothing",
                 logo: "⚽",
@@ -751,7 +1479,7 @@
             },
             // Eğlence
             {
-                id: 7,
+                id: 10,
                 name: "Stadyum Playstation",
                 category: "entertainment",
                 logo: "🎮",
@@ -767,7 +1495,7 @@
                 maps: "https://maps.google.com/?q=Üçgen+Mahallesi+Denizli"
             },
             {
-                id: 8,
+                id: 11,
                 name: "Yeşil Bilardo",
                 category: "entertainment",
                 logo: "🎱",
@@ -784,7 +1512,7 @@
             },
             // Sağlık & Güzellik
             {
-                id: 9,
+                id: 12,
                 name: "Sağlık Merkezi Plus",
                 category: "health",
                 logo: "🏥",
@@ -800,7 +1528,7 @@
                 maps: "https://maps.google.com/?q=Sırakapılar+Mahallesi+Denizli"
             },
             {
-                id: 10,
+                id: 13,
                 name: "Güzellik Salonu Yeşil",
                 category: "health",
                 logo: "💄",
@@ -816,7 +1544,7 @@
                 maps: "https://maps.google.com/?q=Kayhan+Mahallesi+Denizli"
             },
             {
-                id: 11,
+                id: 14,
                 name: "Berber Denizli",
                 category: "health",
                 logo: "✂️",
@@ -833,7 +1561,7 @@
             },
             // Otomotiv
             {
-                id: 12,
+                id: 15,
                 name: "Horoz Oto Galeri",
                 category: "automotive",
                 logo: "🚗",
@@ -849,7 +1577,7 @@
                 maps: "https://maps.google.com/?q=Anafartalar+Mahallesi+Denizli"
             },
             {
-                id: 13,
+                id: 16,
                 name: "Yeşil Oto Servis",
                 category: "automotive",
                 logo: "🔧",
@@ -865,7 +1593,7 @@
                 maps: "https://maps.google.com/?q=Fatih+Mahallesi+Denizli"
             },
             {
-                id: 14,
+                id: 17,
                 name: "Lastik Dünyası",
                 category: "automotive",
                 logo: "🛞",
@@ -882,7 +1610,7 @@
             },
             // Hizmetler
             {
-                id: 15,
+                id: 18,
                 name: "Taraftarlar Temizlik",
                 category: "services",
                 logo: "🧽",
@@ -898,7 +1626,7 @@
                 maps: "https://maps.google.com/?q=Menderes+Mahallesi+Denizli"
             },
             {
-                id: 16,
+                id: 19,
                 name: "Elektrikçi Ahmet",
                 category: "services",
                 logo: "⚡",
@@ -914,7 +1642,7 @@
                 maps: "https://maps.google.com/?q=Çamlaraltı+Mahallesi+Denizli"
             },
             {
-                id: 17,
+                id: 20,
                 name: "Tesisatçı Mehmet",
                 category: "services",
                 logo: "🔧",
@@ -934,9 +1662,12 @@
         let currentCategory = 'all';
         let filteredBusinesses = businesses;
 
-        // Kategori başlıkları
+        // Kategori başlıkları - Yeni kategoriler eklendi
         const categoryTitles = {
-            all: { title: "Tüm <span class='highlight'>İşletmeler</span>", desc: "Denizlispor'umuza destek veren tüm değerli esnaflarımız" },
+            all: { title: "Tüm <span class='highlight'>Hizmetler</span>", desc: "Denizlispor'umuza destek için tüm hizmetlerimiz ve esnaflarımız" },
+            membership: { title: "Üyelik <span class='highlight'>İşlemleri</span>", desc: "Kayıt olun, üyeliğinizi yönetin ve avantajlardan yararlanın" },
+            dues: { title: "Aidat <span class='highlight'>İşlemleri</span>", desc: "Üyelik aidatlarınızı güvenle ödeyin ve takip edin" },
+            donations: { title: "Bağış <span class='highlight'>İşlemleri</span>", desc: "Denizlispor'umuz için bağış yapın ve kulübümüze destek olun" },
             restaurant: { title: "Restoran & <span class='highlight'>Cafe</span>", desc: "Lezzet dolu anlar için Denizlispor destekçisi mekanlar" },
             clothing: { title: "Giyim <span class='highlight'>Mağazaları</span>", desc: "Tarzınızı tamamlayacak yeşil-siyah ruhlu mağazalar" },
             entertainment: { title: "Eğlence <span class='highlight'>Mekanları</span>", desc: "Keyifli vakit geçirebileceğiniz Denizlispor sevdalısı mekanlar" },
@@ -949,6 +1680,101 @@
         window.onload = function() {
             showBusinesses(businesses);
         };
+
+        // Modal Functions
+        function openMembershipModal(tab = 'login') {
+            document.getElementById('membershipModal').style.display = 'block';
+            switchTab(tab);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function switchTab(tab) {
+            // Tab buttons
+            document.querySelectorAll('#membershipModal .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`#membershipModal .tab-btn:${tab === 'login' ? 'first' : 'last'}-child`).classList.add('active');
+            
+            // Tab contents
+            document.getElementById('loginTab').classList.toggle('active', tab === 'login');
+            document.getElementById('registerTab').classList.toggle('active', tab === 'register');
+        }
+
+        function switchDuesTab(tab) {
+            // Tab buttons
+            document.querySelectorAll('#duesModal .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`#duesModal .tab-btn:${tab === 'card' ? 'first' : 'last'}-child`).classList.add('active');
+            
+            // Tab contents
+            document.getElementById('cardTab').classList.toggle('active', tab === 'card');
+            document.getElementById('bankTab').classList.toggle('active', tab === 'bank');
+        }
+
+        function switchDonationTab(tab) {
+            // Tab buttons
+            document.querySelectorAll('#donationsModal .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`#donationsModal .tab-btn:${tab === 'amount' ? 'first' : 'last'}-child`).classList.add('active');
+            
+            // Tab contents
+            document.getElementById('amountTab').classList.toggle('active', tab === 'amount');
+            document.getElementById('campaignsTab').classList.toggle('active', tab === 'campaigns');
+        }
+
+        // Form Handlers
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Giriş işlemi başarılı! Hoş geldiniz.');
+            closeModal('membershipModal');
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            alert('Kayıt işlemi başarılı! Hoş geldiniz.');
+            closeModal('membershipModal');
+        }
+
+        function handleCardPayment(event) {
+            event.preventDefault();
+            alert('Ödeme işlemi başarılı! Aidat ödemeniz alınmıştır.');
+            closeModal('duesModal');
+        }
+
+        function handleBankTransfer(event) {
+            event.preventDefault();
+            alert('Transfer bilgileri kaydedildi! Ödeme onaylandıktan sonra hesabınız güncellenecektir.');
+            closeModal('duesModal');
+        }
+
+        function handleDonation(event) {
+            event.preventDefault();
+            alert('Bağış işlemi başarılı! Desteğiniz için teşekkür ederiz.');
+            closeModal('donationsModal');
+        }
+
+        // Helper Functions
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Kopyalandı: ' + text);
+            });
+        }
+
+        function selectAmount(amount) {
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (amount === 'custom') {
+                document.getElementById('donationAmount').value = '';
+                document.getElementById('donationAmount').focus();
+            } else {
+                document.getElementById('donationAmount').value = amount;
+            }
+        }
+
+        function selectPaymentMethod(method) {
+            document.querySelectorAll('.payment-method').forEach(pm => pm.classList.remove('active'));
+            event.target.closest('.payment-method').classList.add('active');
+        }
 
         // Mobile navigation toggle
         function toggleMobileNav() {
@@ -978,12 +1804,15 @@
             // Desktop butonları da güncelle
             const categoryButtons = {
                 'all': 0,
-                'restaurant': 1,
-                'clothing': 2,
-                'entertainment': 3,
-                'health': 4,
-                'automotive': 5,
-                'services': 6
+                'membership': 1,
+                'dues': 2,
+                'donations': 3,
+                'restaurant': 4,
+                'clothing': 5,
+                'entertainment': 6,
+                'health': 7,
+                'automotive': 8,
+                'services': 9
             };
             
             const desktopBtns = document.querySelectorAll('.nav-container .nav-btn');
@@ -1018,62 +1847,99 @@
                 grid.innerHTML = `
                     <div class="no-results">
                         <i class="fas fa-search"></i>
-                        <h3>Aradığınız kriterlere uygun işletme bulunamadı</h3>
+                        <h3>Aradığınız kriterlere uygun hizmet bulunamadı</h3>
                         <p>Lütfen farklı bir kategori deneyin veya arama teriminizi değiştirin.</p>
                     </div>
                 `;
                 return;
             }
 
-            grid.innerHTML = businessList.map(business => `
-                <div class="business-card">
-                    <div class="business-header">
-                        <div class="business-logo">${business.logo}</div>
-                        <div class="business-info">
+            grid.innerHTML = businessList.map(business => {
+                if (business.isService) {
+                    // Özel hizmet kartı
+                    return `
+                        <div class="service-card">
+                            <div class="business-logo">${business.logo}</div>
                             <h3>${business.name}</h3>
-                            <span class="category-tag">${getCategoryName(business.category)}</span>
+                            <p>${business.description}</p>
+                            <button class="service-btn" onclick="handleServiceClick('${business.category}')">
+                                <i class="fas fa-arrow-right"></i> Hizmeti Kullan
+                            </button>
                         </div>
-                    </div>
-                    
-                    <div class="business-details">
-                        <div class="detail-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:${business.phoneCall}" class="phone-number">
-                                ${business.phone}
-                            </a>
+                    `;
+                } else {
+                    // Normal işletme kartı
+                    return `
+                        <div class="business-card">
+                            <div class="business-header">
+                                <div class="business-logo">${business.logo}</div>
+                                <div class="business-info">
+                                    <h3>${business.name}</h3>
+                                    <span class="category-tag">${getCategoryName(business.category)}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="business-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-phone"></i>
+                                    <a href="tel:${business.phoneCall}" class="phone-number">
+                                        ${business.phone}
+                                    </a>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${business.address}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>${business.description}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="social-links">
+                                <a href="${business.social.instagram}" class="social-link" title="Instagram" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="${business.social.facebook}" class="social-link" title="Facebook" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="${business.social.whatsapp}" class="social-link" title="WhatsApp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                            
+                            <button class="maps-btn" onclick="window.open('${business.maps}', '_blank')">
+                                <i class="fas fa-map-marked-alt"></i> Haritada Görüntüle
+                            </button>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>${business.address}</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-info-circle"></i>
-                            <span>${business.description}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="${business.social.instagram}" class="social-link" title="Instagram" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="${business.social.facebook}" class="social-link" title="Facebook" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="${business.social.whatsapp}" class="social-link" title="WhatsApp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                    
-                    <button class="maps-btn" onclick="window.open('${business.maps}', '_blank')">
-                        <i class="fas fa-map-marked-alt"></i> Haritada Görüntüle
-                    </button>
-                </div>
-            `).join('');
+                    `;
+                }
+            }).join('');
         }
 
-        // Kategori adını getir
+        // Hizmet tıklama işlemi
+        function handleServiceClick(serviceType) {
+            switch(serviceType) {
+                case 'membership':
+                    openMembershipModal('login');
+                    break;
+                case 'dues':
+                    document.getElementById('duesModal').style.display = 'block';
+                    break;
+                case 'donations':
+                    document.getElementById('donationsModal').style.display = 'block';
+                    break;
+                default:
+                    alert("Bu hizmet yakında aktif olacak!");
+            }
+        }
+
+        // Kategori adını getir - Yeni kategoriler eklendi
         function getCategoryName(category) {
             const names = {
+                membership: "Üyelik İşlemleri",
+                dues: "Aidat İşlemleri", 
+                donations: "Bağış İşlemleri",
                 restaurant: "Restoran & Cafe",
                 clothing: "Giyim",
                 entertainment: "Eğlence",
@@ -1113,6 +1979,17 @@
         document.getElementById('searchInput').addEventListener('input', function() {
             setTimeout(searchBusinesses, 300);
         });
+
+        // Modal dışına tıklanırsa kapat
+        window.onclick = function(event) {
+            const modals = ['membershipModal', 'duesModal', 'donationsModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        }
 
         // Sayfa dışında tıklanırsa mobile menüyü kapat
         document.addEventListener('click', function(event) {
