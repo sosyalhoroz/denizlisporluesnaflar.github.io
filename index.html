@@ -294,13 +294,15 @@
             font-size: 14px;
         }
 
-        .detail-item a {
+        /* Phone number styling - sadece numara tıklanabilir */
+        .phone-number {
             color: #ccc;
             text-decoration: none;
             transition: color 0.2s ease;
+            font-weight: 500;
         }
 
-        .detail-item a:hover {
+        .phone-number:hover {
             color: #4a7c20;
         }
 
@@ -531,23 +533,6 @@
         .no-results p {
             font-size: 1rem;
         }
-
-        /* Scroll indicator for mobile nav */
-        .nav-scroll-indicator {
-            display: none;
-            text-align: center;
-            padding: 8px;
-            background-color: rgba(74, 124, 32, 0.1);
-            color: #4a7c20;
-            font-size: 0.8rem;
-            border-top: 1px solid #2a2a2a;
-        }
-
-        @media (max-width: 768px) {
-            .nav-scroll-indicator {
-                display: block;
-            }
-        }
     </style>
 </head>
 <body>
@@ -664,7 +649,7 @@
     </footer>
 
     <script>
-        // İşletme verileri (aynı veriler)
+        // İşletme verileri - Sansürlü telefon numaraları
         const businesses = [
             // Restoran & Cafe
             {
@@ -672,45 +657,48 @@
                 name: "Yeşil Siyah Cafe",
                 category: "restaurant",
                 logo: "☕",
-                phone: "+90 258 123 4567",
+                phone: "+90 258 123 ***7",
+                phoneCall: "+902581234567", // Gerçek numara arama için
                 address: "Çamlaraltı Mahallesi, Denizli",
                 description: "Denizlispor taraftarlarının buluşma noktası",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902581234567"
+                    instagram: "https://instagram.com/yesilsiyahcafe",
+                    facebook: "https://facebook.com/yesilsiyahcafe",
+                    whatsapp: "https://wa.me/902581234567"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Çamlaraltı+Mahallesi+Denizli"
             },
             {
                 id: 2,
                 name: "Horoz Restaurant",
                 category: "restaurant",
                 logo: "🍽️",
-                phone: "+90 258 234 5678",
+                phone: "+90 258 234 ***8",
+                phoneCall: "+902582345678",
                 address: "Servergazi Mahallesi, Denizli",
                 description: "Geleneksel lezzetler ve Denizlispor aşkı",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902582345678"
+                    instagram: "https://instagram.com/horozrestaurant",
+                    facebook: "https://facebook.com/horozrestaurant",
+                    whatsapp: "https://wa.me/902582345678"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Servergazi+Mahallesi+Denizli"
             },
             {
                 id: 3,
                 name: "Stadyum Kahvesi",
                 category: "restaurant",
                 logo: "🏟️",
-                phone: "+90 258 345 9876",
+                phone: "+90 258 345 ***6",
+                phoneCall: "+902583459876",
                 address: "Kale Mahallesi, Denizli",
                 description: "Maç öncesi buluşma noktanız",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902583459876"
+                    instagram: "https://instagram.com/stadyumkahvesi",
+                    facebook: "https://facebook.com/stadyumkahvesi",
+                    whatsapp: "https://wa.me/902583459876"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Kale+Mahallesi+Denizli"
             },
             // Giyim
             {
@@ -718,45 +706,48 @@
                 name: "Taraftar Giyim",
                 category: "clothing",
                 logo: "👕",
-                phone: "+90 258 345 6789",
+                phone: "+90 258 456 ***0",
+                phoneCall: "+902584567890",
                 address: "Kale Mahallesi, Denizli",
                 description: "Denizlispor formaları ve taraftar ürünleri",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902583456789"
+                    instagram: "https://instagram.com/taraftargiyim",
+                    facebook: "https://facebook.com/taraftargiyim",
+                    whatsapp: "https://wa.me/902584567890"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Kale+Mahallesi+Denizli"
             },
             {
                 id: 5,
                 name: "Yeşil Moda",
                 category: "clothing",
                 logo: "🛍️",
-                phone: "+90 258 456 7890",
+                phone: "+90 258 567 ***1",
+                phoneCall: "+902585678901",
                 address: "Gerzele Mahallesi, Denizli",
                 description: "Kaliteli giyim ve Denizlispor sevgisi",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902584567890"
+                    instagram: "https://instagram.com/yesilmoda",
+                    facebook: "https://facebook.com/yesilmoda",
+                    whatsapp: "https://wa.me/902585678901"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Gerzele+Mahallesi+Denizli"
             },
             {
                 id: 6,
                 name: "Spor Dünyası",
                 category: "clothing",
                 logo: "⚽",
-                phone: "+90 258 567 8901",
+                phone: "+90 258 678 ***2",
+                phoneCall: "+902586789012",
                 address: "Üçgen Mahallesi, Denizli",
                 description: "Spor giyim ve ekipmanları",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902585678901"
+                    instagram: "https://instagram.com/spordunyasi",
+                    facebook: "https://facebook.com/spordunyasi",
+                    whatsapp: "https://wa.me/902586789012"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Üçgen+Mahallesi+Denizli"
             },
             // Eğlence
             {
@@ -764,30 +755,32 @@
                 name: "Stadyum Playstation",
                 category: "entertainment",
                 logo: "🎮",
-                phone: "+90 258 567 8901",
+                phone: "+90 258 789 ***3",
+                phoneCall: "+902587890123",
                 address: "Üçgen Mahallesi, Denizli",
                 description: "Oyun salonu ve internet cafe",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902585678901"
+                    instagram: "https://instagram.com/stadyumplaystation",
+                    facebook: "https://facebook.com/stadyumplaystation",
+                    whatsapp: "https://wa.me/902587890123"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Üçgen+Mahallesi+Denizli"
             },
             {
                 id: 8,
                 name: "Yeşil Bilardo",
                 category: "entertainment",
                 logo: "🎱",
-                phone: "+90 258 678 9012",
+                phone: "+90 258 890 ***4",
+                phoneCall: "+902588901234",
                 address: "Sırakapılar Mahallesi, Denizli",
                 description: "Bilardo ve eğlence merkezi",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902586789012"
+                    instagram: "https://instagram.com/yesilbilardo",
+                    facebook: "https://facebook.com/yesilbilardo",
+                    whatsapp: "https://wa.me/902588901234"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Sırakapılar+Mahallesi+Denizli"
             },
             // Sağlık & Güzellik
             {
@@ -795,45 +788,48 @@
                 name: "Sağlık Merkezi Plus",
                 category: "health",
                 logo: "🏥",
-                phone: "+90 258 678 9012",
+                phone: "+90 258 901 ***5",
+                phoneCall: "+902589012345",
                 address: "Sırakapılar Mahallesi, Denizli",
                 description: "Sağlıklı taraftarlar için sağlık hizmetleri",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902586789012"
+                    instagram: "https://instagram.com/saglikmerkeziplus",
+                    facebook: "https://facebook.com/saglikmerkeziplus",
+                    whatsapp: "https://wa.me/902589012345"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Sırakapılar+Mahallesi+Denizli"
             },
             {
                 id: 10,
                 name: "Güzellik Salonu Yeşil",
                 category: "health",
                 logo: "💄",
-                phone: "+90 258 789 0123",
+                phone: "+90 258 012 ***6",
+                phoneCall: "+902580123456",
                 address: "Kayhan Mahallesi, Denizli",
                 description: "Güzellik ve bakım hizmetleri",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902587890123"
+                    instagram: "https://instagram.com/guzelliksalonuyesil",
+                    facebook: "https://facebook.com/guzelliksalonuyesil",
+                    whatsapp: "https://wa.me/902580123456"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Kayhan+Mahallesi+Denizli"
             },
             {
                 id: 11,
                 name: "Berber Denizli",
                 category: "health",
                 logo: "✂️",
-                phone: "+90 258 890 1234",
+                phone: "+90 258 123 ***0",
+                phoneCall: "+902581237890",
                 address: "Anafartalar Mahallesi, Denizli",
                 description: "Erkek kuaförü ve saç bakımı",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902588901234"
+                    instagram: "https://instagram.com/berberdenizli",
+                    facebook: "https://facebook.com/berberdenizli",
+                    whatsapp: "https://wa.me/902581237890"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Anafartalar+Mahallesi+Denizli"
             },
             // Otomotiv
             {
@@ -841,45 +837,48 @@
                 name: "Horoz Oto Galeri",
                 category: "automotive",
                 logo: "🚗",
-                phone: "+90 258 890 1234",
+                phone: "+90 258 234 ***1",
+                phoneCall: "+902582348901",
                 address: "Anafartalar Mahallesi, Denizli",
                 description: "İkinci el araç alım satım",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902588901234"
+                    instagram: "https://instagram.com/horozotogaleri",
+                    facebook: "https://facebook.com/horozotogaleri",
+                    whatsapp: "https://wa.me/902582348901"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Anafartalar+Mahallesi+Denizli"
             },
             {
                 id: 13,
                 name: "Yeşil Oto Servis",
                 category: "automotive",
                 logo: "🔧",
-                phone: "+90 258 901 2345",
+                phone: "+90 258 345 ***2",
+                phoneCall: "+902583459012",
                 address: "Fatih Mahallesi, Denizli",
                 description: "Otomobil bakım ve onarım",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whapsapp: "tel:+902589012345"
+                    instagram: "https://instagram.com/yesilotoservis",
+                    facebook: "https://facebook.com/yesilotoservis",
+                    whatsapp: "https://wa.me/902583459012"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Fatih+Mahallesi+Denizli"
             },
             {
                 id: 14,
                 name: "Lastik Dünyası",
                 category: "automotive",
                 logo: "🛞",
-                phone: "+90 258 012 3456",
+                phone: "+90 258 456 ***3",
+                phoneCall: "+902584560123",
                 address: "Menderes Mahallesi, Denizli",
                 description: "Lastik satış ve montaj hizmetleri",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902580123456"
+                    instagram: "https://instagram.com/lastikdunyasi",
+                    facebook: "https://facebook.com/lastikdunyasi",
+                    whatsapp: "https://wa.me/902584560123"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Menderes+Mahallesi+Denizli"
             },
             // Hizmetler
             {
@@ -887,45 +886,48 @@
                 name: "Taraftarlar Temizlik",
                 category: "services",
                 logo: "🧽",
-                phone: "+90 258 012 3456",
+                phone: "+90 258 567 ***4",
+                phoneCall: "+902585671234",
                 address: "Menderes Mahallesi, Denizli",
                 description: "Profesyonel temizlik hizmetleri",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902580123456"
+                    instagram: "https://instagram.com/taraftarlartemizlik",
+                    facebook: "https://facebook.com/taraftarlartemizlik",
+                    whatsapp: "https://wa.me/902585671234"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Menderes+Mahallesi+Denizli"
             },
             {
                 id: 16,
                 name: "Elektrikçi Ahmet",
                 category: "services",
                 logo: "⚡",
-                phone: "+90 258 123 4567",
+                phone: "+90 258 678 ***5",
+                phoneCall: "+902586782345",
                 address: "Çamlaraltı Mahallesi, Denizli",
                 description: "Elektrik tesisatı ve onarım",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902581234567"
+                    instagram: "https://instagram.com/elektrikciahmet",
+                    facebook: "https://facebook.com/elektrikciahmet",
+                    whatsapp: "https://wa.me/902586782345"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Çamlaraltı+Mahallesi+Denizli"
             },
             {
                 id: 17,
                 name: "Tesisatçı Mehmet",
                 category: "services",
                 logo: "🔧",
-                phone: "+90 258 234 5678",
+                phone: "+90 258 789 ***6",
+                phoneCall: "+902587893456",
                 address: "Servergazi Mahallesi, Denizli",
                 description: "Su tesisatı ve kombi servisi",
                 social: {
-                    instagram: "#",
-                    facebook: "#",
-                    whatsapp: "tel:+902582345678"
+                    instagram: "https://instagram.com/tesisatcimehmet",
+                    facebook: "https://facebook.com/tesisatcimehmet",
+                    whatsapp: "https://wa.me/902587893456"
                 },
-                maps: "https://maps.google.com"
+                maps: "https://maps.google.com/?q=Servergazi+Mahallesi+Denizli"
             }
         ];
 
@@ -1036,7 +1038,7 @@
                     <div class="business-details">
                         <div class="detail-item">
                             <i class="fas fa-phone"></i>
-                            <a href="tel:${business.phone}">
+                            <a href="tel:${business.phoneCall}" class="phone-number">
                                 ${business.phone}
                             </a>
                         </div>
@@ -1051,13 +1053,13 @@
                     </div>
                     
                     <div class="social-links">
-                        <a href="${business.social.instagram}" class="social-link" title="Instagram">
+                        <a href="${business.social.instagram}" class="social-link" title="Instagram" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="${business.social.facebook}" class="social-link" title="Facebook">
+                        <a href="${business.social.facebook}" class="social-link" title="Facebook" target="_blank">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="${business.social.whatsapp}" class="social-link" title="WhatsApp">
+                        <a href="${business.social.whatsapp}" class="social-link" title="WhatsApp" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
