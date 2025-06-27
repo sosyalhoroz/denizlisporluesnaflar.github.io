@@ -700,3 +700,859 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--light-green);
 }
+/* Donations Page Styles */
+.donation-main {
+    margin-top: 80px;
+    padding: 2rem 0;
+    min-height: calc(100vh - 160px);
+}
+
+.donation-hero {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+
+.donation-hero h1 {
+    color: var(--denizli-green);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.donation-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.donation-form-container {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--denizli-green);
+}
+
+.donation-form-container h2 {
+    color: var(--denizli-green);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.quick-amounts {
+    margin: 2rem 0;
+}
+
+.quick-amounts p {
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.amount-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.amount-btn {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--denizli-green);
+    background-color: transparent;
+    color: var(--text-white);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.amount-btn:hover,
+.amount-btn.active {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+}
+
+.donate-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--denizli-green), var(--light-green));
+    color: var(--primary-black);
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 179, 71, 0.3);
+}
+
+.donate-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 179, 71, 0.4);
+}
+
+.bank-info {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    height: fit-content;
+}
+
+.bank-info h3 {
+    color: var(--denizli-green);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bank-details {
+    margin-bottom: 2rem;
+}
+
+.bank-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--primary-black);
+    border-radius: 8px;
+}
+
+.copy-btn {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: var(--light-green);
+}
+
+.payment-instructions {
+    background-color: var(--primary-black);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--denizli-green);
+}
+
+.payment-instructions h4 {
+    color: var(--denizli-green);
+    margin-bottom: 1rem;
+}
+
+.payment-instructions ol {
+    color: var(--text-gray);
+    padding-left: 1.5rem;
+}
+
+.payment-instructions li {
+    margin-bottom: 0.5rem;
+}
+
+.upload-proof-section {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.file-upload-area {
+    border: 2px dashed var(--denizli-green);
+    border-radius: 10px;
+    padding: 3rem;
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+}
+
+.file-upload-area:hover {
+    background-color: rgba(0, 179, 71, 0.1);
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: var(--text-white);
+}
+
+.upload-label i {
+    font-size: 3rem;
+    color: var(--denizli-green);
+}
+
+.upload-note {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.confirm-donation-btn {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-donation-btn:hover {
+    background-color: var(--light-green);
+    transform: translateY(-2px);
+}
+
+.leaderboard-section {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.leaderboard-section h2 {
+    color: var(--denizli-green);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.leaderboard-container {
+    background-color: var(--primary-black);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+/* Business Detail Page Styles */
+.business-detail-main {
+    margin-top: 80px;
+    padding: 2rem 0;
+    min-height: calc(100vh - 160px);
+}
+
+.business-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.business-header {
+    display: flex;
+    gap: 2rem;
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.business-logo-section {
+    flex-shrink: 0;
+}
+
+.business-logo-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 3px solid var(--denizli-green);
+}
+
+.business-title-section {
+    flex-grow: 1;
+}
+
+.business-title {
+    color: var(--denizli-green);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.business-category-text {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.business-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.star {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+}
+
+.rating-value {
+    color: var(--text-white);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.review-count {
+    color: var(--text-gray);
+}
+
+.business-contact-quick {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-quick-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.contact-quick-btn:hover {
+    background-color: var(--light-green);
+    transform: translateY(-2px);
+}
+
+.business-nav {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--secondary-black);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.business-nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-white);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.business-nav-btn:hover,
+.business-nav-btn.active {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+}
+
+.business-section {
+    display: none;
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.business-section.active {
+    display: block;
+}
+
+.business-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.business-description-card,
+.business-info-card {
+    background-color: var(--primary-black);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.business-description-card h3,
+.business-info-card h3 {
+    color: var(--denizli-green);
+    margin-bottom: 1rem;
+}
+
+.features-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.feature-tag {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.info-item i {
+    color: var(--denizli-green);
+    width: 20px;
+}
+
+.info-item a {
+    color: var(--denizli-green);
+    text-decoration: none;
+}
+
+.info-item a:hover {
+    text-decoration: underline;
+}
+
+/* Discount Section */
+.discount-section {
+    margin-top: 2rem;
+}
+
+.discount-card {
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--denizli-green);
+    text-align: center;
+}
+
+.discount-card h3 {
+    color: var(--denizli-green);
+    margin-bottom: 1rem;
+}
+
+.gift-box {
+    background: linear-gradient(45deg, var(--denizli-green), var(--light-green));
+    color: var(--primary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.gift-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 179, 71, 0.3);
+}
+
+.gift-box i {
+    font-size: 3rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.discount-code-revealed {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-black);
+    border-radius: 15px;
+    border: 2px solid var(--accent-gold);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.discount-code {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-gold);
+    background-color: var(--secondary-black);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: 2px dashed var(--accent-gold);
+    margin: 1rem 0;
+    letter-spacing: 2px;
+}
+
+.discount-desc {
+    color: var(--denizli-green);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.copy-discount-btn {
+    background-color: var(--accent-gold);
+    color: var(--primary-black);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.copy-discount-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Reviews Section */
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-review-btn {
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.add-review-btn:hover {
+    background-color: var(--light-green);
+}
+
+.reviews-summary {
+    background-color: var(--primary-black);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.rating-overview {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.rating-large {
+    text-align: center;
+}
+
+.rating-large span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--denizli-green);
+}
+
+.stars-large {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+}
+
+.rating-breakdown {
+    flex-grow: 1;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating-bar span:first-child {
+    width: 50px;
+    font-size: 0.9rem;
+}
+
+.rating-bar span:last-child {
+    width: 30px;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.bar {
+    flex-grow: 1;
+    height: 8px;
+    background-color: var(--secondary-black);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar .fill {
+    height: 100%;
+    background-color: var(--denizli-green);
+    transition: width 0.3s ease;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-item {
+    background-color: var(--primary-black);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--denizli-green);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-author {
+    font-weight: bold;
+    color: var(--denizli-green);
+}
+
+.review-date {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+.review-text {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Services Section */
+.services {
+    padding: 80px 0;
+    background-color: var(--primary-black);
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--denizli-green);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: var(--secondary-black);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--denizli-green);
+    box-shadow: 0 10px 30px rgba(0, 179, 71, 0.2);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--denizli-green);
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--text-white);
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    color: var(--text-gray);
+}
+
+/* Category count */
+.category-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--denizli-green);
+    color: var(--primary-black);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.category-card {
+    position: relative;
+}
+
+/* Business card rating */
+.business-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.business-card-rating .stars {
+    color: var(--accent-gold);
+}
+
+.business-card-rating .rating-text {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: var(--secondary-black);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    color: var(--text-gray);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.close:hover {
+    color: var(--denizli-green);
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.star-rating .star {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: var(--text-gray);
+}
+
+.star-rating .star:hover,
+.star-rating .star.active {
+    color: var(--accent-gold);
+}
+
+/* Updated Business Card with Rating */
+.business-card {
+    background-color: var(--secondary-black);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.business-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--denizli-green);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.business-card-content {
+    padding: 1.5rem;
+}
+
+.business-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.business-card-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.business-card-info h3 {
+    color: var(--denizli-green);
+    margin-bottom: 0.25rem;
+}
+
+.business-card-category {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
