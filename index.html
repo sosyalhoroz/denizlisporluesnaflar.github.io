@@ -19,6 +19,8 @@
                 <ul class="nav-menu">
                     <li><a href="#home">Ana Sayfa</a></li>
                     <li><a href="#categories">Kategoriler</a></li>
+                    <li><a href="#businesses">İşletmeler</a></li>
+                    <li><a href="#services">Hizmetler</a></li>
                     <li><a href="#donations">Bağışlar</a></li>
                     <li><a href="#about">Hakkında</a></li>
                     <li class="auth-buttons">
@@ -52,16 +54,19 @@
                         <i class="fas fa-tshirt"></i>
                         <h3>Giyim</h3>
                         <p>Moda ve giyim mağazaları</p>
+                        <span class="category-count" id="clothingCount">0</span>
                     </div>
                     <div class="category-card" data-category="restaurants">
                         <i class="fas fa-utensils"></i>
                         <h3>Restoranlar</h3>
                         <p>Yemek ve içecek mekanları</p>
+                        <span class="category-count" id="restaurantsCount">0</span>
                     </div>
                     <div class="category-card" data-category="entertainment">
                         <i class="fas fa-gamepad"></i>
                         <h3>Eğlence</h3>
                         <p>Eğlence ve dinlence mekanları</p>
+                        <span class="category-count" id="entertainmentCount">0</span>
                     </div>
                 </div>
             </div>
@@ -69,7 +74,7 @@
 
         <section id="businesses" class="businesses">
             <div class="container">
-                <h2>İşletmeler</h2>
+                <h2>Öne Çıkan İşletmeler</h2>
                 <div class="business-filters">
                     <button class="filter-btn active" data-filter="all">Tümü</button>
                     <button class="filter-btn" data-filter="clothing">Giyim</button>
@@ -78,6 +83,44 @@
                 </div>
                 <div id="business-list" class="business-grid">
                     <!-- Businesses will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Hizmetler</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-store"></i>
+                        <h3>Online Alışveriş</h3>
+                        <p>İşletmelerden online sipariş verebilirsiniz</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-motorcycle"></i>
+                        <h3>Hızlı Teslimat</h3>
+                        <p>Siparişleriniz en kısa sürede kapınızda</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-percentage"></i>
+                        <h3>Özel İndirimler</h3>
+                        <p>Denizlispor taraftarlarına özel indirimler</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Kalite Garantisi</h3>
+                        <p>Onaylanmış ve güvenilir işletmeler</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>7/24 Destek</h3>
+                        <p>Her zaman yanınızdayız</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Denizlispor Desteği</h3>
+                        <p>Her alışverişinizle takımımıza destek</p>
+                    </div>
                 </div>
             </div>
         </section>
