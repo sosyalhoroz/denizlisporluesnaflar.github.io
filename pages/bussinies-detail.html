@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İşletme Detayı - e-horoz</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="../index.html" style="color: var(--denizli-green); text-decoration: none;">e-horoz</a></h1>
+                    <span>Denizlispor'u Destekleyen İşletmeler</span>
+                </div>
+                <div class="nav-back">
+                    <a href="../index.html" class="btn-back">Geri Dön</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="business-detail-main">
+        <div class="container">
+            <div class="business-detail-container">
+                <!-- Business Header -->
+                <div class="business-header">
+                    <div class="business-logo-section">
+                        <img id="businessLogo" src="" alt="İşletme Logosu" class="business-logo-large">
+                    </div>
+                    <div class="business-title-section">
+                        <h1 id="businessName" class="business-title"></h1>
+                        <p id="businessCategory" class="business-category-text"></p>
+                        <div class="business-rating">
+                            <div class="stars" id="businessStars"></div>
+                            <span id="ratingValue" class="rating-value"></span>
+                            <span id="reviewCount" class="review-count"></span>
+                        </div>
+                        <div class="business-contact-quick">
+                            <a id="businessPhone" href="" class="contact-quick-btn">
+                                <i class="fas fa-phone"></i> Ara
+                            </a>
+                            <a id="businessMap" href="" target="_blank" class="contact-quick-btn">
+                                <i class="fas fa-map-marker-alt"></i> Yol Tarifi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Navigation -->
+                <div class="business-nav">
+                    <button class="business-nav-btn active" data-section="overview">Genel Bakış</button>
+                    <button class="business-nav-btn" data-section="gallery">Fotoğraflar</button>
+                    <button class="business-nav-btn" data-section="reviews">Yorumlar</button>
+                    <button class="business-nav-btn" data-section="contact">İletişim</button>
+                </div>
+
+                <!-- Overview Section -->
+                <div id="overview" class="business-section active">
+                    <div class="business-info-grid">
+                        <div class="business-description-card">
+                            <h3>Hakkımızda</h3>
+                            <p id="businessDescription"></p>
+                            
+                            <div class="business-features">
+                                <h4>Özellikler</h4>
+                                <div class="features-list" id="businessFeatures">
+                                    <!-- Features will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="business-info-card">
+                            <h3>İşletme Bilgileri</h3>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="businessAddress"></span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <span id="businessPhoneInfo"></span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Her gün 09:00 - 22:00</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-globe"></i>
+                                <a id="businessWebsite" href="" target="_blank">Web Sitesi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Discount Code Section -->
+                    <div class="discount-section">
+                        <div class="discount-card">
+                            <h3><i class="fas fa-gift"></i> Özel İndirim Kodu</h3>
+                            <p>Denizlispor taraftarlarına özel indirim!</p>
+                            <div class="discount-reveal" id="discountReveal">
+                                <div class="gift-box" onclick="revealDiscount()">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Hediye Kutusunu Aç</span>
+                                </div>
+                                <div class="discount-code-revealed" id="discountCodeRevealed" style="display: none;">
+                                    <div class="discount-code" id="discountCode">DENIZLI2024</div>
+                                    <p class="discount-desc">%15 indirim - Mağazada göster</p>
+                                    <button class="copy-discount-btn" onclick="copyDiscountCode()">
+                                        <i class="fas fa-copy"></i> Kodu Kopyala
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Section -->
+                <div id="gallery" class="business-section">
+                    <h3>Fotoğraf Galerisi</h3>
+                    <div class="photo-gallery" id="photoGallery">
+                        <!-- Photos will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div id="reviews" class="business-section">
+                    <div class="reviews-header">
+                        <h3>Müşteri Yorumları</h3>
+                        <button class="add-review-btn" onclick="openReviewModal()">
+                            <i class="fas fa-plus"></i> Yorum Yap
+                        </button>
+                    </div>
+                    
+                    <div class="reviews-summary">
+                        <div class="rating-overview">
+                            <div class="rating-large">
+                                <span id="overallRating">4.2</span>
+                                <div class="stars-large" id="overallStars"></div>
+                            </div>
+                            <div class="rating-breakdown">
+                                <div class="rating-bar">
+                                    <span>5 ⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 60%"></div></div>
+                                    <span>12</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>4 ⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 25%"></div></div>
+                                    <span>5</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>3 ⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 10%"></div></div>
+                                    <span>2</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>2 ⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 3%"></div></div>
+                                    <span>1</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>1 ⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Reviews will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div id="contact" class="business-section">
+                    <h3>İletişim Bilgileri</h3>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <div class="contact-item-large">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Adres</h4>
+                                    <p id="contactAddress"></p>
+                                </div>
+                            </div>
+                            <div class="contact-item-large">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Telefon</h4>
+                                    <p id="contactPhone"></p>
+                                </div>
+                            </div>
+                            <div class="contact-item-large">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>E-posta</h4>
+                                    <p id="contactEmail"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-media-section">
+                            <h4>Sosyal Medya</h4>
+                            <div class="social-links-large" id="socialLinksLarge">
+                                <!-- Social links will be populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-section">
+                        <h4>Konum</h4>
+                        <div class="map-placeholder">
+                            <p>Harita yükleniyor...</p>
+                            <a id="mapLink" href="" target="_blank" class="map-link">Google Maps'te Aç</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReviewModal()">&times;</span>
+            <h3>Yorum Yap</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Puanınız:</label>
+                    <div class="star-rating" id="starRating">
+                        <span class="star" data-rating="1">⭐</span>
+                        <span class="star" data-rating="2">⭐</span>
+                        <span class="star" data-rating="3">⭐</span>
+                        <span class="star" data-rating="4">⭐</span>
+                        <span class="star" data-rating="5">⭐</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">Yorumunuz:</label>
+                    <textarea id="reviewText" name="reviewText" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Yorum Gönder</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 e-horoz. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="../js/business-detail.js"></script>
+</body>
+</html>
