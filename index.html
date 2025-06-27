@@ -3,145 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-horoz - Denizlispor'u Destekleyen İşletmeler</title>
+    <title>E-Horoz - Denizlispor Destekçisi İşletmeler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
                 <div class="logo">
-                    <h1>e-horoz</h1>
-                    <span>Denizlispor'u Destekleyen İşletmeler</span>
+                    <div class="logo-container">
+                        🐓
+                    </div>
+                    <div class="logo-text">
+                        <h1>E-Horoz</h1>
+                        <p>Denizlispor Destekçisi Platform</p>
+                    </div>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">Ana Sayfa</a></li>
-                    <li><a href="#categories">Kategoriler</a></li>
-                    <li><a href="#businesses">İşletmeler</a></li>
-                    <li><a href="#services">Hizmetler</a></li>
-                    <li><a href="#donations">Bağışlar</a></li>
-                    <li><a href="#about">Hakkında</a></li>
-                    <li class="auth-buttons">
-                        <a href="pages/login.html" class="btn-login">Giriş</a>
-                        <a href="pages/register.html" class="btn-register">Kayıt</a>
-                    </li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="auth-buttons" id="authButtons">
+                    <a href="#" class="auth-btn" onclick="openModal('loginModal')">
+                        <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    </a>
+                    <a href="#" class="auth-btn register" onclick="openModal('registerModal')">
+                        <i class="fas fa-user-plus"></i> Kayıt Ol
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="İşletme ara..." id="searchInput">
+                    <button class="search-btn" onclick="searchBusinesses()">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
 
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <button class="nav-btn active" onclick="showCategory('all')">
+                    <i class="fas fa-th-large"></i> Tümü
+                </button>
+                <button class="nav-btn" onclick="showCategory('restaurants')">
+                    <i class="fas fa-utensils"></i> Restoranlar
+                </button>
+                <button class="nav-btn" onclick="showCategory('clothing')">
+                    <i class="fas fa-tshirt"></i> Giyim
+                </button>
+                <button class="nav-btn" onclick="showCategory('entertainment')">
+                    <i class="fas fa-gamepad"></i> Eğlence
+                </button>
+            </div>
+            <button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+                <i class="fas fa-bars"></i> Kategoriler
+            </button>
+            <div class="nav-dropdown" id="mobileNavDropdown">
+                <button class="nav-btn active" onclick="showCategoryMobile('all')">
+                    <i class="fas fa-th-large"></i> Tümü
+                </button>
+                <button class="nav-btn" onclick="showCategoryMobile('restaurants')">
+                    <i class="fas fa-utensils"></i> Restoranlar
+                </button>
+                <button class="nav-btn" onclick="showCategoryMobile('clothing')">
+                    <i class="fas fa-tshirt"></i> Giyim
+                </button>
+                <button class="nav-btn" onclick="showCategoryMobile('entertainment')">
+                    <i class="fas fa-gamepad"></i> Eğlence
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <h2>Denizlispor'u Destekleyen İşletmeleri Keşfedin</h2>
-                <p>Yerel işletmelerimizi destekleyerek Denizlispor'a güç katın</p>
-                <a href="#categories" class="cta-button">İşletmeleri Görüntüle</a>
+        <div class="container">
+            <!-- Platform Hizmetleri -->
+            <div class="section-header">
+                <h2>Platform <span class="highlight">Hizmetleri</span></h2>
+                <p>Denizlispor'umuza destek için özel hizmetlerimiz</p>
             </div>
-        </section>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-logo">👤</div>
+                    <h3>İşletme Tanıtımı</h3>
+                    <p>Denizlispor'u destekleyen işletmeleri tanıtıyor, değerlendirme ve yorum sistemi sunuyoruz.</p>
+                    <button class="service-btn" onclick="scrollToBusinesses()">
+                        <i class="fas fa-arrow-right"></i> İşletmeleri Gör
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-logo">⭐</div>
+                    <h3>Puanlama Sistemi</h3>
+                    <p>İşletmeleri puanlayarak diğer taraftarlara yardımcı olun, deneyimlerinizi paylaşın.</p>
+                    <button class="service-btn" onclick="scrollToBusinesses()">
+                        <i class="fas fa-arrow-right"></i> Değerlendir
+                    </button>
+                </div>
+                <div class="service-card">
+                    <div class="service-logo">❤️</div>
+                    <h3>Bağış Platformu</h3>
+                    <p>Denizlispor'umuz için bağış yapın ve kulübümüze destek olun.</p>
+                    <button class="service-btn" onclick="openModal('donationModal')">
+                        <i class="fas fa-arrow-right"></i> Bağış Yap
+                    </button>
+                </div>
+            </div>
 
-        <section id="categories" class="categories">
-            <div class="container">
-                <h2>Kategoriler</h2>
-                <div class="category-grid">
-                    <div class="category-card" data-category="clothing">
-                        <i class="fas fa-tshirt"></i>
-                        <h3>Giyim</h3>
-                        <p>Moda ve giyim mağazaları</p>
-                        <span class="category-count" id="clothingCount">0</span>
-                    </div>
-                    <div class="category-card" data-category="restaurants">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Restoranlar</h3>
-                        <p>Yemek ve içecek mekanları</p>
-                        <span class="category-count" id="restaurantsCount">0</span>
-                    </div>
-                    <div class="category-card" data-category="entertainment">
-                        <i class="fas fa-gamepad"></i>
-                        <h3>Eğlence</h3>
-                        <p>Eğlence ve dinlence mekanları</p>
-                        <span class="category-count" id="entertainmentCount">0</span>
-                    </div>
+            <!-- Kategoriler -->
+            <div class="section-header">
+                <h2>Destekçi İşletme <span class="highlight">Kategorileri</span></h2>
+                <p id="categoryDesc">Denizlispor'umuzu destekleyen değerli esnaflarımız</p>
+            </div>
+            <div class="category-showcase">
+                <div class="category-large-card" onclick="showCategory('restaurants')">
+                    <div class="category-icon">🍽️</div>
+                    <h3>Restoranlar</h3>
+                    <p>Yemek ve içecek mekanları</p>
+                    <span class="category-count" id="restaurantsCount">0</span>
+                </div>
+                <div class="category-large-card" onclick="showCategory('clothing')">
+                    <div class="category-icon">👕</div>
+                    <h3>Giyim</h3>
+                    <p>Moda ve giyim mağazaları</p>
+                    <span class="category-count" id="clothingCount">0</span>
+                </div>
+                <div class="category-large-card" onclick="showCategory('entertainment')">
+                    <div class="category-icon">🎮</div>
+                    <h3>Eğlence</h3>
+                    <p>Eğlence ve dinlence mekanları</p>
+                    <span class="category-count" id="entertainmentCount">0</span>
                 </div>
             </div>
-        </section>
 
-        <section id="businesses" class="businesses">
-            <div class="container">
-                <h2>Öne Çıkan İşletmeler</h2>
-                <div class="business-filters">
-                    <button class="filter-btn active" data-filter="all">Tümü</button>
-                    <button class="filter-btn" data-filter="clothing">Giyim</button>
-                    <button class="filter-btn" data-filter="restaurants">Restoranlar</button>
-                    <button class="filter-btn" data-filter="entertainment">Eğlence</button>
-                </div>
-                <div id="business-list" class="business-grid">
-                    <!-- Businesses will be loaded dynamically -->
-                </div>
+            <!-- Öne Çıkan İşletmeler -->
+            <div class="section-header" id="businessesSection">
+                <h2>Öne Çıkan <span class="highlight">İşletmeler</span></h2>
+                <p>En yüksek puanlı ve popüler işletmelerimiz</p>
             </div>
-        </section>
+            <div class="business-grid" id="businessGrid">
+                <!-- İşletmeler buraya JavaScript ile yüklenecek -->
+            </div>
 
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Hizmetler</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-store"></i>
-                        <h3>Online Alışveriş</h3>
-                        <p>İşletmelerden online sipariş verebilirsiniz</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-motorcycle"></i>
-                        <h3>Hızlı Teslimat</h3>
-                        <p>Siparişleriniz en kısa sürede kapınızda</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-percentage"></i>
-                        <h3>Özel İndirimler</h3>
-                        <p>Denizlispor taraftarlarına özel indirimler</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-star"></i>
-                        <h3>Kalite Garantisi</h3>
-                        <p>Onaylanmış ve güvenilir işletmeler</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-headset"></i>
-                        <h3>7/24 Destek</h3>
-                        <p>Her zaman yanınızdayız</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-heart"></i>
-                        <h3>Denizlispor Desteği</h3>
-                        <p>Her alışverişinizle takımımıza destek</p>
-                    </div>
-                </div>
+            <!-- Bağış Sıralaması -->
+            <div class="section-header">
+                <h2>Bağış <span class="highlight">Sıralaması</span></h2>
+                <p>Denizlispor'a en çok destek veren taraftarlarımız</p>
             </div>
-        </section>
-
-        <section id="donations" class="donations">
-            <div class="container">
-                <h2>Bağış Sıralaması</h2>
-                <div class="leaderboard">
-                    <div id="donor-list">
-                        <!-- Top donors will be loaded dynamically -->
-                    </div>
+            <div class="leaderboard-container">
+                <div class="leaderboard" id="donationLeaderboard">
+                    <!-- Bağış sıralaması buraya yüklenecek -->
                 </div>
-                <a href="pages/donations.html" class="donate-btn">Bağış Yap</a>
+                <button class="donate-btn" onclick="openModal('donationModal')">
+                    <i class="fas fa-heart"></i> Bağış Yap
+                </button>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="footer">
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-sign-in-alt"></i> Giriş Yap</h2>
+                <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Kullanıcı Adı veya E-posta</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Kayıt Ol</h2>
+                <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tab-container">
+                    <button class="tab-btn active" onclick="switchTab('userRegister')">Normal Kullanıcı</button>
+                    <button class="tab-btn" onclick="switchTab('businessRegister')">İşletme Sahibi</button>
+                </div>
+                
+                <!-- Normal Kullanıcı Kayıt -->
+                <div id="userRegister" class="tab-content active">
+                    <form id="userRegisterForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ad</label>
+                                <input type="text" class="form-control" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Soyad</label>
+                                <input type="text" class="form-control" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Kullanıcı Adı</label>
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Şifre</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Şifre Tekrar</label>
+                                <input type="password" class="form-control" name="passwordConfirm" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-user-plus"></i> Kayıt Ol
+                        </button>
+                    </form>
+                </div>
+
+                <!-- İşletme Sahibi Kayıt -->
+                <div id="businessRegister" class="tab-content">
+                    <form id="businessRegisterForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ad</label>
+                                <input type="text" class="form-control" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Soyad</label>
+                                <input type="text" class="form-control" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>İşletme Adı</label>
+                            <input type="text" class="form-control" name="businessName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Kullanıcı Adı</label>
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Şifre</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Şifre Tekrar</label>
+                                <input type="password" class="form-control" name="passwordConfirm" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Denizlispor Destek Belgesi</label>
+                            <input type="file" class="form-control" name="supportProof" accept="image/*,.pdf" required>
+                            <small>Denizlispor'u desteklediğinizi gösteren belge (fiş, makbuz, fotoğraf vb.)</small>
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-building"></i> İşletme Kaydı Yap
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-heart"></i> Bağış Yap</h2>
+                <span class="close" onclick="closeModal('donationModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="donationForm">
+                    <div class="form-group">
+                        <label>E-posta Adresiniz:</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bağış Miktarı (₺):</label>
+                        <div class="donation-amounts">
+                            <button type="button" class="amount-btn" onclick="selectAmount(50)">50 ₺</button>
+                            <button type="button" class="amount-btn" onclick="selectAmount(100)">100 ₺</button>
+                            <button type="button" class="amount-btn" onclick="selectAmount(250)">250 ₺</button>
+                            <button type="button" class="amount-btn" onclick="selectAmount(500)">500 ₺</button>
+                            <button type="button" class="amount-btn" onclick="selectAmount(1000)">1000 ₺</button>
+                            <button type="button" class="amount-btn" onclick="selectAmount(0)">Diğer</button>
+                        </div>
+                        <input type="number" class="form-control" name="amount" id="donationAmount" min="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesajınız (İsteğe bağlı):</label>
+                        <textarea class="form-control" name="message" rows="3" placeholder="Denizlispor'a destek mesajınızı yazabilirsiniz..."></textarea>
+                    </div>
+                    <div class="bank-info">
+                        <h4><i class="fas fa-university"></i> Banka Bilgileri</h4>
+                        <div class="bank-detail">
+                            <span>IBAN:</span>
+                            <strong id="bankIban">TR32 0006 4000 0011 2345 6789 01</strong>
+                            <button type="button" class="copy-btn" onclick="copyIban()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="payment-instructions">
+                        <h5>Ödeme Talimatları:</h5>
+                        <ol>
+                            <li>Yukarıdaki forma bilgilerinizi girin</li>
+                            <li>IBAN numarasını kopyalayın</li>
+                            <li>Banka uygulamanızdan ödemeyi gerçekleştirin</li>
+                            <li>Ödeme makbuzunu yükleyin</li>
+                            <li>Onay sürecini bekleyin</li>
+                        </ol>
+                    </div>
+                    <div class="form-group">
+                        <label>Ödeme Makbuzu:</label>
+                        <input type="file" class="form-control" name="paymentProof" accept="image/*,.pdf" required>
+                        <small>Banka havalesi makbuzunu yükleyin</small>
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-heart"></i> Bağış Yap
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Business Detail Modal -->
+    <div id="businessDetailModal" class="modal business-detail-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="detailModalTitle"><i class="fas fa-store"></i> İşletme Detayları</h2>
+                <span class="close" onclick="closeModal('businessDetailModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="business-detail-header">
+                    <div class="business-detail-logo" id="detailLogo">🍽️</div>
+                    <h2 id="detailName">İşletme Adı</h2>
+                    <div class="business-rating">
+                        <div class="stars" id="detailStars">★★★★☆</div>
+                        <span class="rating-score" id="detailRating">4.2</span>
+                        <span class="rating-count" id="detailReviewCount">(128 değerlendirme)</span>
+                    </div>
+                </div>
+                <div class="business-tabs">
+                    <button class="business-tab-btn active" onclick="switchBusinessTab('info')">Bilgiler</button>
+                    <button class="business-tab-btn" onclick="switchBusinessTab('photos')">Fotoğraflar</button>
+                    <button class="business-tab-btn" onclick="switchBusinessTab('reviews')">Yorumlar</button>
+                    <button class="business-tab-btn" onclick="switchBusinessTab('discount')">İndirim</button>
+                </div>
+                
+                <!-- Bilgiler Tab -->
+                <div id="info" class="business-tab-content active">
+                    <div class="business-description">
+                        <h4>Hakkımızda</h4>
+                        <p id="detailDescription">Bu işletme hakkında detaylı bilgiler...</p>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="#" class="phone-number" id="detailPhone">+90 258 123 ***7</a>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="detailAddress">Adres bilgisi</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-globe"></i>
+                        <a href="#" target="_blank" id="detailWebsite" style="color: #4a7c20;">Web sitesi</a>
+                    </div>
+                </div>
+                
+                <!-- Fotoğraflar Tab -->
+                <div id="photos" class="business-tab-content">
+                    <div class="photo-gallery" id="photoGallery">
+                        <!-- Fotoğraflar buraya yüklenecek -->
+                    </div>
+                </div>
+                
+                <!-- Yorumlar Tab -->
+                <div id="reviews" class="business-tab-content">
+                    <div class="reviews-section">
+                        <div class="add-review-section" id="addReviewSection" style="display: none;">
+                            <h4>Yorum Yap</h4>
+                            <form id="reviewForm">
+                                <div class="star-rating" id="starRating">
+                                    <span class="star" data-rating="1">⭐</span>
+                                    <span class="star" data-rating="2">⭐</span>
+                                    <span class="star" data-rating="3">⭐</span>
+                                    <span class="star" data-rating="4">⭐</span>
+                                    <span class="star" data-rating="5">⭐</span>
+                                </div>
+                                <textarea class="form-control" name="reviewText" rows="3" placeholder="Yorumunuzu yazın..." required></textarea>
+                                <button type="submit" class="btn">Yorum Gönder</button>
+                            </form>
+                        </div>
+                        <div id="reviewsList">
+                            <!-- Yorumlar buraya yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- İndirim Tab -->
+                <div id="discount" class="business-tab-content">
+                    <div class="discount-section">
+                        <h3 style="color: white; margin-bottom: 20px;">Özel İndirim Kodu</h3>
+                        <div class="discount-box" id="discountBox" onclick="revealDiscount()">
+                            <div class="gift-icon">🎁</div>
+                            <p style="color: white; font-size: 1.1rem;">Hediye Paketini Aç!</p>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Tıklayarak özel indirim kodunu keşfet</p>
+                        </div>
+                        <div id="discountRevealed" class="discount-revealed" style="display: none;">
+                            <p>🎉 Tebrikler! İndirim Kodunuz:</p>
+                            <h2 id="discountCode">DENIZLI20</h2>
+                            <p>%20 İndirim - Mağazada gösterin!</p>
+                            <button type="button" class="btn" onclick="copyDiscountCode()">
+                                <i class="fas fa-copy"></i> Kodu Kopyala
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Settings Modal -->
+    <div id="userSettingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-cog"></i> Hesap Ayarları</h2>
+                <span class="close" onclick="closeModal('userSettingsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="userSettingsForm">
+                    <div class="form-group">
+                        <label>Yeni Kullanıcı Adı</label>
+                        <input type="text" class="form-control" name="newUsername">
+                        <small>Boş bırakırsanız değişmez</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Yeni E-posta</label>
+                        <input type="email" class="form-control" name="newEmail">
+                        <small>Boş bırakırsanız değişmez</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Yeni Şifre</label>
+                        <input type="password" class="form-control" name="newPassword">
+                        <small>Boş bırakırsanız değişmez</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Yeni Şifre Tekrar</label>
+                        <input type="password" class="form-control" name="newPasswordConfirm">
+                    </div>
+                    <div class="form-group">
+                        <label>Mevcut Şifre (Doğrulama)</label>
+                        <input type="password" class="form-control" name="currentPassword" required>
+                        <small>Değişiklikleri onaylamak için mevcut şifrenizi girin</small>
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-check-circle"></i> Başarılı</h2>
+                <span class="close" onclick="closeModal('successModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3 id="successMessage">İşlem başarılı!</h3>
+                    <p id="successDescription">İşleminiz başarıyla tamamlandı.</p>
+                </div>
+                <button type="button" class="btn" onclick="closeModal('successModal')">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <p>&copy; 2024 e-horoz. Tüm hakları saklıdır.</p>
-            <p>Denizlispor'u destekleyen işletmeler platformu</p>
+            <div class="footer-content">
+                <h3><span class="highlight">E-Horoz</span> Platform</h3>
+                <p>Denizlispor'umuzu destekleyen tüm hizmetler ve esnaflar için kapsamlı platform.</p>
+                <p style="margin-top: 20px; color: #4a7c20;">
+                    <i class="fas fa-heart"></i> Yeşil Siyah Aşkına <i class="fas fa-heart"></i>
+                </p>
+                <p style="margin-top: 15px;">
+                    © 2024 E-Horoz Platform. Tüm hakları saklıdır.
+                </p>
+            </div>
         </div>
     </footer>
 
