@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - e-horoz</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-panel">
+        <div class="admin-header">
+            <h1>Admin Panel</h1>
+            <div class="admin-nav">
+                <a href="../index.html" class="btn-back">Ana Sayfaya Dön</a>
+                <a href="#" onclick="authSystem.logout()" class="btn-logout">Çıkış Yap</a>
+            </div>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="pending-users">Bekleyen Kullanıcılar</button>
+            <button class="tab-btn" data-tab="pending-businesses">Bekleyen İşletmeler</button>
+            <button class="tab-btn" data-tab="pending-donations">Bekleyen Bağışlar</button>
+            <button class="tab-btn" data-tab="all-users">Tüm Kullanıcılar</button>
+            <button class="tab-btn" data-tab="all-businesses">Tüm İşletmeler</button>
+            <button class="tab-btn" data-tab="settings">Ayarlar</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="pending-users" class="tab-panel active">
+                <h3>Bekleyen Kullanıcı Onayları</h3>
+                <div id="pending-users-list"></div>
+            </div>
+
+            <div id="pending-businesses" class="tab-panel">
+                <h3>Bekleyen İşletme Onayları</h3>
+                <div id="pending-businesses-list"></div>
+            </div>
+
+            <div id="pending-donations" class="tab-panel">
+                <h3>Bekleyen Bağış Onayları</h3>
+                <div id="pending-donations-list"></div>
+            </div>
+
+            <div id="all-users" class="tab-panel">
+                <h3>Tüm Kullanıcılar</h3>
+                <div id="all-users-list"></div>
+            </div>
+
+            <div id="all-businesses" class="tab-panel">
+                <h3>Tüm İşletmeler</h3>
+                <div id="all-businesses-list"></div>
+            </div>
+
+            <div id="settings" class="tab-panel">
+                <h3>Site Ayarları</h3>
+                <div class="settings-section">
+                    <h4>IBAN Bilgileri</h4>
+                    <form id="iban-form">
+                        <div class="form-group">
+                            <label for="iban">IBAN:</label>
+                            <input type="text" id="iban" name="iban" placeholder="TR00 0000 0000 0000 0000 0000 00">
+                        </div>
+                        <div class="form-group">
+                            <label for="bank-name">Banka Adı:</label>
+                            <input type="text" id="bank-name" name="bankName" placeholder="Banka Adı">
+                        </div>
+                        <div class="form-group">
+                            <label for="account-holder">Hesap Sahibi:</label>
+                            <input type="text" id="account-holder" name="accountHolder" placeholder="Hesap Sahibi Adı">
+                        </div>
+                        <button type="submit" class="submit-btn">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

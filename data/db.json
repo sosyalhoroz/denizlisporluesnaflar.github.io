@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin2020",
+      "role": "admin",
+      "name": "Site Administrator"
+    }
+  ],
+  "businesses": [
+    {
+      "id": 1,
+      "ownerId": 2,
+      "name": "Example Restaurant",
+      "category": "restaurants",
+      "status": "approved",
+      "logo": "",
+      "photos": [],
+      "phone": "+90 258 xxx xxxx",
+      "address": "Denizli Center",
+      "mapLink": "",
+      "socialMedia": {},
+      "description": "",
+      "supportProof": ""
+    }
+  ],
+  "donations": [
+    {
+      "id": 1,
+      "userId": 2,
+      "amount": 100,
+      "proof": "",
+      "date": "2024-01-01",
+      "status": "approved"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "businessId": 1,
+      "userId": 2,
+      "comment": "Great service!",
+      "date": "2024-01-01"
+    }
+  ]
+}

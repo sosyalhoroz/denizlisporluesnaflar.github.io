@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt - e-horoz</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2>Kayıt Ol</h2>
+            <div class="role-selector">
+                <button class="role-btn active" data-role="user">Normal Kullanıcı</button>
+                <button class="role-btn" data-role="business">İşletme Sahibi</button>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Ad Soyad:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-posta:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <!-- Business Owner specific fields -->
+                <div id="businessFields" class="business-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="businessName">İşletme Adı:</label>
+                        <input type="text" id="businessName" name="businessName">
+                    </div>
+                    <div class="form-group">
+                        <label for="supportProof">Destek Belgesi:</label>
+                        <input type="file" id="supportProof" name="supportProof" accept="image/*,.pdf">
+                        <small>Denizlispor'u desteklediğinizi gösteren belge (fiş, makbuz vb.)</small>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Kayıt Ol</button>
+            </form>
+            <p>Zaten hesabınız var mı? <a href="login.html">Giriş yapın</a></p>
+            <a href="../index.html">Ana Sayfaya Dön</a>
+        </div>
+    </div>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
