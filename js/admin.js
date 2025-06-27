@@ -483,3 +483,83 @@ function logout() {
 document.addEventListener('DOMContentLoaded', () => {
     window.adminPanel = new AdminPanel();
 });
+// Admin.js dosyasının sonuna bu fonksiyonları ekleyin:
+
+loadAllUsers() {
+    const container = document.getElementById('allUsersList');
+    
+    if (this.users.length === 0) {
+        container.innerHTML = '<div class="no-results"><i class="fas fa-users"></i><h3>Kullanıcı bulunmuyor</h3><p>Henüz kayıtlı kullanıcı bulunmuyor.</p></div>';
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ad Soyad</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>E-posta</th>
+                        <th>Rol</th>
+                        <th>Durum</th>
+                        <th>Kayıt Tarihi</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${this.users.map(user => `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.firstName} ${user.lastName}</td>
+                            <td>${user.username}</td>
+                            <td>${user.email}</td>
+                            <td><span class="role-badge role-${user.role}">${this.getRoleName(user.role)}</span></td>
+                            <td><span class="status-badge status-${user.status}">${this.getStatusName(user.status)}</span></td>
+                            <td>${new Date(user.registrationDate || Date.now()).toLocaleDateString('tr-TR')}</td>
+                            <td>
+                                ${user.role !== 'admin' ? `
+                                    <button class="reject-btn" onclick="adminPanel.deleteUser(${user.id})">
+                                        <i class="fas fa-trash"></i> Sil
+                                    </button>
+                                ` : '<span style="color: #666;">-</span>'}
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+getRoleName(role) {
+    const roles = {
+        'admin': 'Yönetici',
+        'business': 'İşletme',
+        'user': 'Kullanıcı'
+    };
+    return roles[role] || role;
+}
+
+getStatusName(status) {
+    const statuses = {
+        'approved': 'Onaylı',
+        'pending': 'Beklemede',
+        'rejected': 'Reddedildi'
+    };
+    return statuses[status] || status;
+}
+
+deleteUser(userId) {
+    if (!confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?')) return;
+
+    const userIndex = this.users.findIndex(u => u.id === userId);
+    if (userIndex === -1) return;
+
+    this.users.splice(userIndex, 1);
+    this.saveData();
+    this.loadAllUsers();
+    this.updateStats();
+    this.showToast('Kullanıcı silindi.', 'warning');
+}
