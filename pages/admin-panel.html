@@ -43,6 +43,9 @@
                     <button class="admin-tab-btn" onclick="switchAdminTab('pending-changes')">
                         <i class="fas fa-edit"></i> Bekleyen Değişiklikler
                     </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('all-users')">
+                        <i class="fas fa-users"></i> Tüm Kullanıcılar
+                    </button>
                     <button class="admin-tab-btn" onclick="switchAdminTab('donation-ranking')">
                         <i class="fas fa-trophy"></i> Bağış Sıralaması
                     </button>
@@ -83,13 +86,27 @@
                     </div>
                 </div>
 
+                <!-- Tüm Kullanıcılar -->
+                <div id="all-users" class="admin-tab-content">
+                    <h2>Tüm Kullanıcılar</h2>
+                    <div id="allUsersList" class="admin-content-area">
+                        <!-- Kullanıcılar buraya yüklenecek -->
+                    </div>
+                </div>
+
                 <!-- Bağış Sıralaması -->
                 <div id="donation-ranking" class="admin-tab-content">
                     <h2>Bağış Sıralaması Yönetimi</h2>
                     <div class="admin-actions">
-                        <button class="btn" onclick="sortDonations('amount')">Miktara Göre Sırala</button>
-                        <button class="btn" onclick="sortDonations('date')">Tarihe Göre Sırala</button>
-                        <button class="btn" onclick="resetDonations()">Sıralamayı Sıfırla</button>
+                        <button class="btn" onclick="sortDonations('amount')">
+                            <i class="fas fa-sort-amount-down"></i> Miktara Göre Sırala
+                        </button>
+                        <button class="btn" onclick="sortDonations('date')">
+                            <i class="fas fa-sort-numeric-down"></i> Tarihe Göre Sırala
+                        </button>
+                        <button class="btn secondary" onclick="resetDonations()">
+                            <i class="fas fa-undo"></i> Sıralamayı Sıfırla
+                        </button>
                     </div>
                     <div id="donationRankingList" class="admin-content-area">
                         <!-- Bağış sıralaması buraya yüklenecek -->
@@ -166,15 +183,3 @@
     <script src="../js/admin.js"></script>
 </body>
 </html>
-<!-- Mevcut admin-tabs div'ine bu button'u ekleyin -->
-<button class="admin-tab-btn" onclick="switchAdminTab('all-users')">
-    <i class="fas fa-users"></i> Tüm Kullanıcılar
-</button>
-
-<!-- Mevcut tab-content'lerden sonra bu div'i ekleyin -->
-<div id="all-users" class="admin-tab-content">
-    <h2>Tüm Kullanıcılar</h2>
-    <div id="allUsersList" class="admin-content-area">
-        <!-- Kullanıcılar buraya yüklenecek -->
-    </div>
-</div>
