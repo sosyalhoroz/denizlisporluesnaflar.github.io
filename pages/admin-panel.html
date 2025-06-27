@@ -3,81 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - e-horoz</title>
+    <title>Admin Panel - E-Horoz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="admin-panel">
+    <div class="admin-container">
         <div class="admin-header">
-            <h1>Admin Panel</h1>
-            <div class="admin-nav">
-                <a href="../index.html" class="btn-back">Ana Sayfaya Dön</a>
-                <a href="#" onclick="authSystem.logout()" class="btn-logout">Çıkış Yap</a>
+            <div class="container">
+                <div class="admin-header-content">
+                    <div class="logo">
+                        <div class="logo-container">🐓</div>
+                        <div class="logo-text">
+                            <h1>E-Horoz Admin</h1>
+                            <p>Yönetim Paneli</p>
+                        </div>
+                    </div>
+                    <div class="admin-nav">
+                        <a href="../index.html" class="btn secondary">Ana Sayfaya Dön</a>
+                        <a href="#" onclick="logout()" class="btn">Çıkış Yap</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="admin-tabs">
-            <button class="tab-btn active" data-tab="pending-users">Bekleyen Kullanıcılar</button>
-            <button class="tab-btn" data-tab="pending-businesses">Bekleyen İşletmeler</button>
-            <button class="tab-btn" data-tab="pending-donations">Bekleyen Bağışlar</button>
-            <button class="tab-btn" data-tab="all-users">Tüm Kullanıcılar</button>
-            <button class="tab-btn" data-tab="all-businesses">Tüm İşletmeler</button>
-            <button class="tab-btn" data-tab="settings">Ayarlar</button>
-        </div>
+        <div class="admin-main">
+            <div class="container">
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" onclick="switchAdminTab('pending-users')">
+                        <i class="fas fa-user-clock"></i> Bekleyen Kullanıcılar
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('pending-businesses')">
+                        <i class="fas fa-store"></i> Bekleyen İşletmeler
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('pending-donations')">
+                        <i class="fas fa-heart"></i> Bekleyen Bağışlar
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('pending-changes')">
+                        <i class="fas fa-edit"></i> Bekleyen Değişiklikler
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('donation-ranking')">
+                        <i class="fas fa-trophy"></i> Bağış Sıralaması
+                    </button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('settings')">
+                        <i class="fas fa-cog"></i> Ayarlar
+                    </button>
+                </div>
 
-        <div class="tab-content">
-            <div id="pending-users" class="tab-panel active">
-                <h3>Bekleyen Kullanıcı Onayları</h3>
-                <div id="pending-users-list"></div>
-            </div>
+                <!-- Bekleyen Kullanıcılar -->
+                <div id="pending-users" class="admin-tab-content active">
+                    <h2>Bekleyen Kullanıcı Onayları</h2>
+                    <div id="pendingUsersList" class="admin-content-area">
+                        <!-- Bekleyen kullanıcılar buraya yüklenecek -->
+                    </div>
+                </div>
 
-            <div id="pending-businesses" class="tab-panel">
-                <h3>Bekleyen İşletme Onayları</h3>
-                <div id="pending-businesses-list"></div>
-            </div>
+                <!-- Bekleyen İşletmeler -->
+                <div id="pending-businesses" class="admin-tab-content">
+                    <h2>Bekleyen İşletme Onayları</h2>
+                    <div id="pendingBusinessesList" class="admin-content-area">
+                        <!-- Bekleyen işletmeler buraya yüklenecek -->
+                    </div>
+                </div>
 
-            <div id="pending-donations" class="tab-panel">
-                <h3>Bekleyen Bağış Onayları</h3>
-                <div id="pending-donations-list"></div>
-            </div>
+                <!-- Bekleyen Bağışlar -->
+                <div id="pending-donations" class="admin-tab-content">
+                    <h2>Bekleyen Bağış Onayları</h2>
+                    <div id="pendingDonationsList" class="admin-content-area">
+                        <!-- Bekleyen bağışlar buraya yüklenecek -->
+                    </div>
+                </div>
 
-            <div id="all-users" class="tab-panel">
-                <h3>Tüm Kullanıcılar</h3>
-                <div id="all-users-list"></div>
-            </div>
+                <!-- Bekleyen Değişiklikler -->
+                <div id="pending-changes" class="admin-tab-content">
+                    <h2>Bekleyen Kullanıcı Değişiklikleri</h2>
+                    <div id="pendingChangesList" class="admin-content-area">
+                        <!-- Bekleyen değişiklikler buraya yüklenecek -->
+                    </div>
+                </div>
 
-            <div id="all-businesses" class="tab-panel">
-                <h3>Tüm İşletmeler</h3>
-                <div id="all-businesses-list"></div>
-            </div>
+                <!-- Bağış Sıralaması -->
+                <div id="donation-ranking" class="admin-tab-content">
+                    <h2>Bağış Sıralaması Yönetimi</h2>
+                    <div class="admin-actions">
+                        <button class="btn" onclick="sortDonations('amount')">Miktara Göre Sırala</button>
+                        <button class="btn" onclick="sortDonations('date')">Tarihe Göre Sırala</button>
+                        <button class="btn" onclick="resetDonations()">Sıralamayı Sıfırla</button>
+                    </div>
+                    <div id="donationRankingList" class="admin-content-area">
+                        <!-- Bağış sıralaması buraya yüklenecek -->
+                    </div>
+                </div>
 
-            <div id="settings" class="tab-panel">
-                <h3>Site Ayarları</h3>
-                <div class="settings-section">
-                    <h4>IBAN Bilgileri</h4>
-                    <form id="iban-form">
-                        <div class="form-group">
-                            <label for="iban">IBAN:</label>
-                            <input type="text" id="iban" name="iban" placeholder="TR00 0000 0000 0000 0000 0000 00">
+                <!-- Ayarlar -->
+                <div id="settings" class="admin-tab-content">
+                    <h2>Site Ayarları</h2>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3><i class="fas fa-university"></i> IBAN Bilgileri</h3>
+                            <form id="ibanForm">
+                                <div class="form-group">
+                                    <label>IBAN</label>
+                                    <input type="text" class="form-control" name="iban" id="ibanInput" placeholder="TR00 0000 0000 0000 0000 0000 00">
+                                </div>
+                                <div class="form-group">
+                                    <label>Banka Adı</label>
+                                    <input type="text" class="form-control" name="bankName" id="bankNameInput" placeholder="Banka Adı">
+                                </div>
+                                <div class="form-group">
+                                    <label>Hesap Sahibi</label>
+                                    <input type="text" class="form-control" name="accountHolder" id="accountHolderInput" placeholder="Hesap Sahibi Adı">
+                                </div>
+                                <button type="submit" class="btn">
+                                    <i class="fas fa-save"></i> IBAN Bilgilerini Kaydet
+                                </button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label for="bank-name">Banka Adı:</label>
-                            <input type="text" id="bank-name" name="bankName" placeholder="Banka Adı">
+                        
+                        <div class="settings-card">
+                            <h3><i class="fas fa-chart-bar"></i> Platform İstatistikleri</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number" id="totalUsers">0</div>
+                                    <div class="stat-label">Toplam Kullanıcı</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="totalBusinesses">0</div>
+                                    <div class="stat-label">Toplam İşletme</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="totalDonations">0</div>
+                                    <div class="stat-label">Toplam Bağış</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number" id="totalAmount">₺0</div>
+                                    <div class="stat-label">Toplam Tutar</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="account-holder">Hesap Sahibi:</label>
-                            <input type="text" id="account-holder" name="accountHolder" placeholder="Hesap Sahibi Adı">
-                        </div>
-                        <button type="submit" class="submit-btn">Kaydet</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../js/auth.js"></script>
+    <!-- File Viewer Modal -->
+    <div id="fileViewerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file"></i> Dosya Görüntüleyici</h2>
+                <span class="close" onclick="closeModal('fileViewerModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="fileViewerContent">
+                    <!-- Dosya içeriği buraya yüklenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../js/admin.js"></script>
 </body>
 </html>
