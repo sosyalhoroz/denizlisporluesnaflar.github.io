@@ -166,3 +166,15 @@
     <script src="../js/admin.js"></script>
 </body>
 </html>
+<!-- Mevcut admin-tabs div'ine bu button'u ekleyin -->
+<button class="admin-tab-btn" onclick="switchAdminTab('all-users')">
+    <i class="fas fa-users"></i> Tüm Kullanıcılar
+</button>
+
+<!-- Mevcut tab-content'lerden sonra bu div'i ekleyin -->
+<div id="all-users" class="admin-tab-content">
+    <h2>Tüm Kullanıcılar</h2>
+    <div id="allUsersList" class="admin-content-area">
+        <!-- Kullanıcılar buraya yüklenecek -->
+    </div>
+</div>
